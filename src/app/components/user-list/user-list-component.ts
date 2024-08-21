@@ -20,7 +20,7 @@ export class UserListComponent {
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe(data => {
       this.users = data;
+      console.log('Fetched Users:', this.users);
     });
   }
-
 }
