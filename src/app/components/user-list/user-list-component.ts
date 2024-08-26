@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../../services/user-service';
 import { User } from '../../interfaces/user';
 import { CommonModule } from '@angular/common';
+import * as echarts from 'echarts';
 
 @Component({
   selector: 'app-user-list-component',
@@ -17,28 +18,12 @@ export class UserListComponent {
 
   constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
-    this.userService.getAllUsers().subscribe(data => {
-      this.users = data;
-      console.log('Fetched Users:', this.users);
-    });
-  }
-}
-
-import { Component, OnInit } from '@angular/core';
-import { RegisterService } from 'src/app/services/register.service';
-import * as echarts from 'echarts';
-
-type EChartsOption = echarts.EChartsOption;
-
-@Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
-})
-export class UserListComponent implements OnInit {
-
-  constructor(private userService: UserService) {}
+  // ngOnInit(): void {
+  //   this.userService.getAllUsers().subscribe(data => {
+  //     this.users = data;
+  //     console.log('Fetched Users:', this.users);
+  //   });
+  // }
 
   ngOnInit(): void {
     this.userService.getChartData().subscribe(data => {
@@ -121,4 +106,3 @@ export class UserListComponent implements OnInit {
     option && myChart.setOption(option);
   }
 }
-
